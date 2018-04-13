@@ -23,18 +23,14 @@ import model.bean.Produto;
  */
 public class ProdutoDAO {
 
-    Connection con;
-    
-    public ProdutoDAO() {
-        con = ConnectionFactory.getConnection();
-    }
-    
     public void create(Produto p) {
-
+        
+        Connection con = ConnectionFactory.getConnection();
+        
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO produto (descricao,qtd,preco1)VALUES(?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO produto (descricao,qtd,preco)VALUES(?,?,?)");
             stmt.setString(1, p.getDescricao());
             stmt.setInt(2, p.getQtd());
             stmt.setDouble(3, p.getPreco());
@@ -52,6 +48,8 @@ public class ProdutoDAO {
 
     public List<Produto> read() {
 
+        Connection con = ConnectionFactory.getConnection();
+        
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -83,6 +81,8 @@ public class ProdutoDAO {
     }
     public List<Produto> readForDesc(String desc) {
 
+        Connection con = ConnectionFactory.getConnection();
+        
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -117,6 +117,8 @@ public class ProdutoDAO {
 
     public void update(Produto p) {
 
+        Connection con = ConnectionFactory.getConnection();
+        
         PreparedStatement stmt = null;
 
         try {
@@ -138,6 +140,8 @@ public class ProdutoDAO {
     }
     public void delete(Produto p) {
 
+        Connection con = ConnectionFactory.getConnection();
+        
         PreparedStatement stmt = null;
 
         try {
